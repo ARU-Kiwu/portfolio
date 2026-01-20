@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Project Detail</title>
+        <link rel="icon" type="image/png" href="./assets/favicon-CgOtDAIP.png">
+        <style>
+        :root { --bg-dark: #050505; }
+
+        body {
+            margin: 0; padding: 0;
+            background-color: var(--bg-dark);
+            color: #e0e0e0;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .limit-container {
+            max-width: 1400px; margin: 0 auto;
+            position: relative; padding-left: 1rem; padding-right: 1rem;
+        }
+
+        h1, h2, h3, .font-display { font-family: 'Syne', sans-serif; }
+        .animated-item { opacity: 0; transform: translateY(20px); }
+
+        /* --- THE WIPER (Essential for transition) --- */
+        #wiper {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background-color: #ffffff;
+            z-index: 9999;
+            transform-origin: top;
+            /* Starts visible to hide the data loading */
+        }
+
+        /* HEADER & UI */
+        header { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+
+        .back-button {
+            display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem;
+            background-color: #000000; color: white; border: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px;
+            border-radius: 999px; transition: all 0.4s; box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .back-button:hover { background-color: #ffffff; color: black; transform: translateY(-2px); }
+        .back-button svg { width: 0.9rem; height: 0.9rem; fill: white; transition: fill 0.4s ease; }
+        .back-button:hover svg { fill: black; }
+
+        /* HERO */
+        .gradient-header {
+            height: 100vh;
+            background-repeat: no-repeat; background-position: center center; background-size: cover;
+            position: relative;
+        }
+
+        /* PARALLAX SWIPER STYLES */
+        .parallax-slider-wrapper { width: 100%; height: 80vh; position: relative; overflow: hidden; }
+        .swiper-slide { display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 8px; background-color: #111; }
+        .slide-bg-image { position: absolute; top: 0; left: -15%; width: 130%; height: 100%; background-size: cover; background-position: center; }
+
+        /* Custom Navigation */
+        .swiper-nav-btn {
+            position: absolute; bottom: 3rem; z-index: 20; width: 3.5rem; height: 3.5rem;
+            border: 1px solid rgba(255,255,255,0.2); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.3s; background: rgba(0,0,0,0.3); backdrop-filter: blur(5px);
+        }
+        .swiper-nav-btn:hover { background: white; color: black; border-color: white; }
+        .prev-btn { right: 6rem; } .next-btn { right: 2rem; }
+        .swiper-pagination-progressbar { background: rgba(255,255,255,0.1) !important; height: 2px !important; bottom: 0 !important; top: auto !important; }
+        .swiper-pagination-progressbar-fill { background: white !important; }
+        
+    </style>
+      <script type="module" crossorigin src="./assets/index-BZCYUQcW.js"></script>
+      <script type="module" crossorigin src="./assets/main-CnWvwbBs.js"></script>
+      <link rel="stylesheet" crossorigin href="./assets/index-UFUvpm-A.css">
+      <link rel="stylesheet" crossorigin href="./assets/main-CJ-KzOvo.css">
+    </head>
+
+    <body>
+
+        <div id="wiper"></div>
+
+        <header class="w-full fixed top-0 left-0 z-50">
+            <div class="limit-container flex justify-between items-center py-6">
+                <a href="projects.html" class="back-button transition-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <span class="hidden md:block">All Projects</span>
+                    <span class="block md:hidden">Back</span>
+                </a>
+                <span
+                    id="project-title"
+                    class="px-4 py-2 rounded-full border border-white/10 bg-black/50 backdrop-blur-md text-white/70 text-xs font-bold tracking-widest uppercase">
+                    Loading...
+                </span>
+            </div>
+        </header>
+
+        <main>
+
+            <section id="p-hero-bg"
+                class="w-full gradient-header flex items-end pb-24">
+                <div class="limit-container w-full">
+                    <div class="max-w-3xl">
+                        <h1 id="p-title"
+                            class="text-4xl md:text-6xl font-black text-white font-display tracking-tighter leading-tight animated-item mb-4">
+                            Loading...
+                        </h1>
+                        <p id="p-desc"
+                            class="text-lg md:text-xl text-zinc-300 max-w-2xl font-light animated-item">
+                            Loading project data...
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                class="w-full py-12 px-10 border-b border-white/5 bg-[#080808]">
+                <div class="limit-container">
+                    <div
+                        class="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 text-sm text-zinc-500">
+                        <div class="animated-item"><span
+                                class="font-bold text-white block mb-1 text-lg">Role</span><span
+                                id="p-role"></span></div>
+                        <div class="animated-item"><span
+                                class="font-bold text-white block mb-1 text-lg">Stack</span><span
+                                id="p-stack"></span></div>
+                        <div class="animated-item"><span
+                                class="font-bold text-white block mb-1 text-lg">Year</span><span
+                                id="p-year"></span></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="w-full py-24 md:py-32">
+                <div
+                    class="limit-container grid grid-cols-1 md:grid-cols-12 gap-12">
+                    <div class="md:col-span-4 animated-item">
+                        <h2
+                            class="text-4xl font-black text-white font-display sticky top-32">The
+                            Challenge</h2>
+                    </div>
+                    <div class="md:col-span-8 space-y-8 animated-item">
+                        <p id="p-challenge"
+                            class="text-xl text-zinc-400 leading-relaxed font-light">
+                            Loading...
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                class="w-full py-10 md:py-20 border-t border-b border-white/5 bg-[#080808] overflow-hidden">
+                <div
+                    class="limit-container pb-12 flex justify-between items-end animated-item">
+                    <h2
+                        class="text-4xl font-black text-white font-display">Visual
+                        Journey</h2>
+                    <div
+                        class="hidden md:block text-zinc-500 text-sm tracking-widest uppercase">Drag
+                        to explore</div>
+                </div>
+
+                <div class="swiper parallax-slider-wrapper animated-item">
+                    <div class="swiper-wrapper" id="p-gallery">
+                    </div>
+
+                    <div class="swiper-nav-btn prev-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor"
+                            stroke-width="2"><path d="M15 18l-6-6 6-6" /></svg>
+                    </div>
+                    <div class="swiper-nav-btn next-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor"
+                            stroke-width="2"><path d="M9 18l6-6-6-6" /></svg>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </section>
+
+            <section
+                class="w-full py-24 md:py-32">
+                <div
+                    class="limit-container grid grid-cols-1 md:grid-cols-12 gap-12">
+                    <div class="md:col-span-4 animated-item">
+                        <h2
+                            class="text-4xl font-black text-white font-display sticky top-32">The
+                            Solution</h2>
+                    </div>
+                    <div class="md:col-span-8 space-y-8 animated-item">
+                        <p id="p-solution"
+                            class="text-xl text-zinc-400 leading-relaxed font-light">
+                            Loading...
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="p-hero-bg"
+                class="w-full h-screen bg-cover bg-center flex flex-col items-center justify-center text-center relative px-4 preview-element">
+
+                <div class="absolute inset-0 bg-zinc-950/70"></div>
+
+                <div class="relative z-10 max-w-5xl mx-auto">
+                    <div
+                        class="w-px h-24 bg-gradient-to-b from-transparent via-white/50 to-transparent mx-auto mb-8 animated-item"></div>
+
+                    <h2 id="p-title"
+                        class="uppercase text-6xl md:text-7xl font-black font-display text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-500 tracking-tighter mb-8 animated-item">
+                        Check it out
+                    </h2>
+
+                    <p id="p-desc"
+                        class="text-xl md:text-2xl text-zinc-300 font-light max-w-2xl mx-auto mb-12 animated-item">
+                        Preview the live project
+                    </p>
+
+                    <div id="p-links-container"
+                        class="flex justify-center gap-4 animated-item">
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <a id="p-next-link" href="#"
+            class="group block w-full relative h-[60vh] overflow-hidden border-t border-white/10 transition-link">
+            <div id="p-next-bg"
+                class="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105"></div>
+            <div
+                class="absolute inset-0 bg-black/60 transition-opacity group-hover:bg-black/40"></div>
+
+            <div
+                class="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
+                <span
+                    class="text-zinc-400 text-sm uppercase tracking-[0.3em] mb-4 animated-item">Up
+                    Next</span>
+                <h2 id="p-next-title"
+                    class="text-5xl md:text-7xl font-black text-white font-display tracking-tighter animated-item">
+                    Next Project
+                </h2>
+                <div
+                    class="mt-8 inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full text-sm font-bold uppercase tracking-widest transform transition-all group-hover:px-8 animated-item">
+                    View Project
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                        fill="currentColor" class="w-4 h-4">
+                        <path fill-rule="evenodd"
+                            d="M3 10a.75.75 0 01.75-.75h10.612l-4.158-3.96a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </div>
+            </div>
+        </a>
+
+        <div class="bg-[#050505] py-8 text-center border-t border-white/5">
+            <a href="projects.html"
+                class="text-zinc-600 text-sm uppercase tracking-widest hover:text-white transition">
+                Back to all projects
+            </a>
+        </div>
+    </body>
+</html>
